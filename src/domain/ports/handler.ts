@@ -4,6 +4,6 @@ import { BreakingBadClient } from "../../adapters/api/BreakingBad"
 
 
 handle(list characters/character){
-    ShowService showservice = new ShowService(new BreakingBadClient)
+    ShowService showservice = new ShowService(new BreakingBadClient())
     return showService.getEpisodes();
 }

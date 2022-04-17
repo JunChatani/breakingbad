@@ -1,6 +1,6 @@
 import { character } from "./character";
 
-export type characters = {
+export type episode = {
     title : string;
     season : string;
     characters : character[];

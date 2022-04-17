@@ -1,4 +1,5 @@
 import { IDrama } from "./IDrama";
+import {episode} from "../model/episode";
 
 export class ShowService {
     client: IDrama;
@@ -7,10 +8,7 @@ export class ShowService {
     }
 
     getEpisodes() {
-        this.getEpisodes()
-    }
-    getEpisodeCharacterList(){
-        this.getEpisodes()
+        this.client.getEpisodes()
     }
 };
 

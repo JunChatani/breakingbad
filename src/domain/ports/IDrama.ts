@@ -1,3 +1,5 @@
+import {episode} from "../model/episode";
+
 export interface IDrama {
-    getEpisodes(): Promise<string | null>;
+    getEpisodes(): Promise<episode[] | null>;
 }

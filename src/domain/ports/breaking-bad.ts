@@ -17,7 +17,6 @@ export const getOneCharacterById = async (id:number) => {
 
 export const getQuotesFromOneCharacterByName = async (name:string) => {
     try {
-      
       const response = await axios.get(`${BASE_URL}/quote?author=${name.replace(" ", "+")}`);
       const quoteInfo = response.data;
   

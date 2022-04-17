@@ -14,3 +14,17 @@ export const getOneCharacterById = async (id:number) => {
     console.error(errors);
   }
 };
+
+export const getQuotesFromOneCharacterByName = async (name:string) => {
+    try {
+      
+      const response = await axios.get(`${BASE_URL}/quote?author=${name.replace(" ", "+")}`);
+      const quoteInfo = response.data;
+  
+      console.log(`GET: return array of quote info associated with Jesse Pinkman`, quoteInfo);
+  
+      return quoteInfo;
+    } catch (errors) {
+      console.error(errors);
+    }
+  };

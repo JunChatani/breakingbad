@@ -1,0 +1,5 @@
+GET https://www.breakingbadapi.com/api/characters/1
+Content-Type: application/json
+
+{}
+

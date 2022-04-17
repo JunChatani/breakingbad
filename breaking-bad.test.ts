@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { getTodoItems } from "./breaking-bad";
+import { getOneCharacterById } from "./breaking-bad";
 
 describe('fetchData', () => {
     it('fetches successfully data from an API', async () => {
-        getTodoItems();
+        expect(getOneCharacterById()).toBe(Any);
     });
 });

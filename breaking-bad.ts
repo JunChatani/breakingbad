@@ -2,15 +2,17 @@ import axios from 'axios';
 
 const BASE_URL = 'https://www.breakingbadapi.com/api';
 
-export const getTodoItems = async () => {
+export const getOneCharacterById = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/quote?author=Jesse+Pinkman`);
+    // Jesse Pinkman.
+    const id = "2";
 
-    const todoItems = response.data;
+    const response = await axios.get(`${BASE_URL}/characters/${id}`);
+    const characterInfo = response.data;
 
-    console.log(`GET: Here's the list of todos`, todoItems);
+    console.log(`GET: return character info associated with Jesse Pinkman`, characterInfo);
 
-    return todoItems;
+    return characterInfo;
   } catch (errors) {
     console.error(errors);
   }

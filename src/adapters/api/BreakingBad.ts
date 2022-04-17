@@ -1,19 +1,23 @@
-import { IDrama } from "../../domain/ports/IDrama"
+import {IDrama} from "../../domain/ports/IDrama"
 import axios from 'axios';
+import {episode} from "../../domain/model/episode";
 
 export class BreakingBadClient implements IDrama {
     BASE_URL = 'https://www.breakingbadapi.com/api';
 
     getEpisodes = async () => {
         try {
-          const response = await axios.get(`${this.BASE_URL}/episodes`);
-          const episodeInfo = response.data;
-      
-          console.log(`GET: return all episodes`, episodeInfo);
-      
-          return episodeInfo;
+            const response: episode[] = await axios.get<episode[]>(`${this.BASE_URL}/episodes`);
+            if (response === undefined) {
+                return null;
+            }
+            const episodes = response.data;
+
+            console.log(`GET: return all episodes`, episodes);
+
+            return episodes;
         } catch (errors) {
-          console.error(errors);
+            console.error(errors);
         }
-      };
+    };
 }

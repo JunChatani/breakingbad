@@ -1,9 +1,16 @@
-IDrama breakingBad = new BreakingBad()
-IDrama pokemon = new Pokemon()
+import { IDrama } from "./IDrama";
 
-getEpisodes() {
+export class ShowService {
+    client: IDrama;
+    constructor(client: IDrama) {
+        this.client = client;
+    }
 
-}
-getEpisodes(){
+    getEpisodes() {
+        this.getEpisodes()
+    }
+    getEpisodeCharacterList(){
+        this.getEpisodes()
+    }
+};
 
-}

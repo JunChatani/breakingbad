@@ -1,4 +1,3 @@
-interface IDrama {
-    set(key: string, value: string): Promise<string | null>;
-    getEpisodes(key: string): Promise<string | null>;
+export interface IDrama {
+    getEpisodes(): Promise<string | null>;
 }

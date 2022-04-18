@@ -1,4 +1,6 @@
 import {ShowService} from "./ShowService";
+
+// Mocking should simplify this import.
 import {BreakingBadClient} from "../../adapters/breakingBadClient/BreakingBadClient";
 
 describe('ShowService', () => {

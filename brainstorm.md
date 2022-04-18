@@ -21,3 +21,21 @@ character: string
 init() 
 getCharacters() keyvalue id/name
 
+
+
+## Plan of action 
+
+
+-- Create Mock in to use in tests instead of actual REST calls.
+    Feature of mock BreakingBadClient ? 
+        --- ShowService.test
+                fake breaking bad client
+                getEpisodes should return predefined list instead of REST call
+        --- BreakingBadClient.test
+                Axios get should be mocked to not actually perform a REST call
+
+-- Add field to episodes type were missing one !
+-- Debug issue in ShowSevice test (multiple names).
+
+-- implement Handler
+-- implement adapters/api

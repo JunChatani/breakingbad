@@ -1,5 +1,5 @@
-import {IDrama} from "../../domain/ports/IDrama"
 import axios from 'axios';
+import {IDrama} from "../../domain/ports/IDrama"
 import {episode} from "../../domain/model/episode";
 
 export class BreakingBadClient implements IDrama {

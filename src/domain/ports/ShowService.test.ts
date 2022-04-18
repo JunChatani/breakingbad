@@ -20,6 +20,35 @@ describe('Show Service: ', () => {
 
         showService = new ShowService(FakeBreakingBadClient);
     });
+    describe('verify list of episodes in correct format are returned ', () => {
+        it('for no characters passed', async () => {
+            const empty : string[] = [];
+            expect(await showService.getFormattedEpisodeListByName()).toEqual(empty);
+        });
+        it('for no characters passed as string', async () => {
+            const empty : string[] = [];
+            expect(await showService.getFormattedEpisodeListByName("")).toEqual(empty);
+        });
+        it('for no characters passed as list', async () => {
+            const empty : string[] = [];
+            expect(await showService.getFormattedEpisodeListByName(empty)).toEqual(empty);
+        });
+        it('for single characters passed', async () => {
+            expect(await showService.getFormattedEpisodeListByName(['Walter White'])).toEqual(
+                [
+                    "S0101 - Pilot",
+                    "S0514 - Ozymandias",
+                    "S0309 - Kafkaesque"
+                ]);
+        });
+        it('for multiple characters passed', async () => {
+            expect(await showService.getFormattedEpisodeListByName(["Skyler White", "Ted Beneke"])).toEqual(
+                [
+                    "S0309 - Kafkaesque"
+                ]);
+        });
+
+    });
     describe('returns correct format when string() is called with certain episode. ', () => {
         it('with episode number and season less than 10', () => {
             const ep : episode = {
@@ -66,7 +95,7 @@ describe('Show Service: ', () => {
                         "Krazy-8",
                         "Bogdan Wolynetz"
                     ],
-                    episode: "1"
+                    episodeNumber: "1"
                 },
                 {
                     title: "Ozymandias",
@@ -82,7 +111,7 @@ describe('Show Service: ', () => {
                         "Jack Welker",
                         "Steve Gomez"
                     ],
-                    episode: "14"
+                    episodeNumber: "14"
                 },
                 {
                     title: "Kafkaesque",
@@ -98,7 +127,7 @@ describe('Show Service: ', () => {
                         "Saul Goodman",
                         "Ted Beneke"
                     ],
-                    episode: "9"
+                    episodeNumber: "9"
                 }
             ]);
         });
@@ -123,7 +152,7 @@ describe('Show Service: ', () => {
                         "Saul Goodman",
                         "Ted Beneke"
                     ],
-                    episode: "9"
+                    episodeNumber: "9"
                 }
             ]);
         });

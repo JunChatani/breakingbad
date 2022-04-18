@@ -12,7 +12,7 @@
         "Krazy-8",
         "Bogdan Wolynetz"
       ],
-      "episode": "1"
+      "episodeNumber": "1"
     },
     {
         "title": "Ozymandias",
@@ -28,7 +28,7 @@
             "Jack Welker",
             "Steve Gomez"
         ],
-        "episode": "14"
+        "episodeNumber": "14"
     },
     {
         "title": "Kafkaesque",
@@ -44,6 +44,6 @@
             "Saul Goodman",
             "Ted Beneke"
         ],
-        "episode": "9"
+        "episodeNumber": "9"
     }
 ]

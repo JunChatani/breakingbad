@@ -8,12 +8,19 @@ export class BreakingBadClient implements IDrama {
 
     getEpisodes = async () => {
         try {
-            const response : breakingBadEpisodeResponse = await axios.get(`${this.BASE_URL}/episodes`);
-            const episodes : episode[] = response.data
+            const response: breakingBadEpisodeResponse = await axios.get(`${this.BASE_URL}/episodes`);
+            const episodes: episode[] = response.data
 
+            // console.log(response.data)
             // console.log(`GET: return all episodes`, episodes);
 
-            return episodes;
+            const mappedEpisodes: episode[] = episodes.map(it => <episode>{
+                title: it.title,
+                season: it.season,
+                characters: it.characters
+            });
+            console.log(mappedEpisodes)
+            return mappedEpisodes;
         } catch (errors) {
             throw new Error(`Error is : ${errors}`);
         }

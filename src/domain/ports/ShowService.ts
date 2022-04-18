@@ -22,18 +22,19 @@ export class ShowService {
         if (typeof names === "string") {
             return episodes.filter(episode => (episode.characters).some(character => character === names));
         } else {
-            return episodes.filter(episode => {
-                console.log(episode);
-                names.every(name => {
-                    console.log(name);
-                    episode.characters.includes(name)
-                })
-            });
             // return episodes.filter(episode => {
-            //     (episode.characters).includes(character => {
-            //         console.log(character);
-            //         chara.includes(character)
+            //     console.log(episode);
+            //     names.every(name => {
+            //         console.log(name);
+            //         episode.characters.includes(name)
             //     })
+            // });
+            return episodes
+                // .filter(episode => {
+                // (episode.characters).some(character => {
+                //     console.log(character);
+                //     names.includes(character)
+                // })
             // });
         }
     }

@@ -18,12 +18,14 @@
   "homepage": "https://github.com/JunChatani/breakingbad#readme",
   "devDependencies": {
     "@types/jest": "^27.4.1",
+    "@types/jest-when": "^3.5.0",
     "jest": "^27.5.1"
   },
   "dependencies": {
     "@babel/preset-env": "^7.16.11",
     "axios": "^0.26.1",
     "babel-jest": "^27.5.1",
+    "jest-when": "^3.5.1",
     "ts-jest": "^27.1.4"
   }
 }

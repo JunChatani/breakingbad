@@ -1,0 +1,49 @@
+[
+    {
+      "title": "Pilot",
+      "season": "1",
+      "characters": [
+        "Walter White",
+        "Jesse Pinkman",
+        "Skyler White",
+        "Hank Schrader",
+        "Marie Schrader",
+        "Walter White Jr.",
+        "Krazy-8",
+        "Bogdan Wolynetz"
+      ],
+      "episode": "1"
+    },
+    {
+        "title": "Ozymandias",
+        "season": "5",
+        "characters": [
+            "Walter White",
+            "Jesse Pinkman",
+            "Skyler White",
+            "Hank Schrader",
+            "Marie Schrader",
+            "Walter White Jr.",
+            "Todd Alquist",
+            "Jack Welker",
+            "Steve Gomez"
+        ],
+        "episode": "14"
+    },
+    {
+        "title": "Kafkaesque",
+        "season": "3",
+        "characters": [
+            "Walter White",
+            "Jesse Pinkman",
+            "Skyler White",
+            "Hank Schrader",
+            "Marie Schrader",
+            "Walter White Jr.",
+            "Gustavo Fring",
+            "Saul Goodman",
+            "Ted Beneke"
+        ],
+        "episode": "9"
+    }
+]

@@ -11,7 +11,7 @@ export class BreakingBadClient implements IDrama {
             const response : breakingBadEpisodeResponse = await axios.get(`${this.BASE_URL}/episodes`);
             const episodes : episode[] = response.data
 
-            console.log(`GET: return all episodes`, episodes);
+            // console.log(`GET: return all episodes`, episodes);
 
             return episodes;
         } catch (errors) {

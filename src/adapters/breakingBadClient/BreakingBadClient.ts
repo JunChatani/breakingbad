@@ -13,7 +13,7 @@ export class BreakingBadClient implements IDrama {
             // console.log(response.data[0])
             // console.log(`GET: return all episodes`, episodes);
 
-            // console.log(mappedEpisodes)
+            console.log(episodes)
             return mapEpisodes(episodes);
         } catch (errors) {
             throw new Error(`Error is : ${errors}`);

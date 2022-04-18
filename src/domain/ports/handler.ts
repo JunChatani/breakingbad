@@ -1,5 +1,5 @@
 import {ShowService} from "./ShowService";
-import { BreakingBadClient } from "../../adapters/api/BreakingBad"
+import { BreakingBadClient } from "../../adapters/breakingBadClient/BreakingBadClient"
 // Handler interface
 
 

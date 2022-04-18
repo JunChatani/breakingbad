@@ -37,10 +37,9 @@ describe('fetchData', () => {
 
         // Then
         expect((await episodes).length).not.toEqual(0);
-        expect(typeof (await episodes)).toBe(episode[])
+        expect(typeof (await episodes)).not.toBe(null)
     });
-
-    it('fetches character info by id', async () => {
+    it('Check if correct total number of episodes is retrieved', async () => {
         const bp = new BreakingBadClient();
         const episodes = bp.getEpisodes();
 

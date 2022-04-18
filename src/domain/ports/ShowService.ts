@@ -9,10 +9,13 @@ export class ShowService {
     }
 
     getEpisodes() {
-        this.client.getEpisodes();
+        return this.client.getEpisodes()
+            .then(r => r)
+            .catch(e => {throw new Error(e)});
     }
+
     getEpisodeCharacterList(): episode[]{
-        return this.client.getEpisodes();
+        return this.getEpisodes();
     }
 };
 

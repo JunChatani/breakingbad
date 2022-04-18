@@ -2,6 +2,6 @@ import { character } from "./character";
 
 export type episode = {
     title : string;
-    season : string;
+    season : number;
     characters : character[];
 }

@@ -1,20 +1,21 @@
 import { episode } from "../../domain/model/episode";
 
+
 export type breakingBadEpisodeResponse = {
         title: string;
-        season: number;
+        season: string;
         characters: string[];
-        id: number;
-        episode: number;
+        episode_id: number;
+        episode: string;
         air_date: string;
         series: string;
 }
 
 export function mapEpisodes(episodes: breakingBadEpisodeResponse[]) : episode[]{
-    return episodes.map(it => <episode>{
+    return episodes.map(it => ({
         title: it.title,
-        season: it.season,
+        season: Number(it.season),
         characters: it.characters,
-        episodeNumber: it.episode
-    });
+        episodeNumber: Number(it.episode)
+    }));
 }

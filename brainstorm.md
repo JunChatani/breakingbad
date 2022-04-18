@@ -39,3 +39,7 @@ getCharacters() keyvalue id/name
 
 -- implement Handler
 -- implement adapters/api
+
+
+Run linter with 
+tslint -c tslint.json 'src/**/*.ts'

@@ -1,31 +1,44 @@
 import axios from 'axios';
 
-import {BreakingBadClient} from "./BreakingBadClient"
-import breakingBadExample from "./BreakingBadMockResponse.json";
+import { BreakingBadClient } from "./BreakingBadClient";
+
 import { breakingBadEpisodeResponse } from './BreakingBadResponse';
+import { episode } from '../../domain/model/episode';
 
-jest.mock("axios")
+import breakingBadResponseExample from "./BreakingBadMockResponse.json";
 
+
+// Mock axios module.
+jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
+// Read in example response from JSON file.
+const bbResponse : breakingBadEpisodeResponse[] = breakingBadResponseExample;
 
-describe('fetchData', () => {
-    let bbResponse : breakingBadEpisodeResponse[]
+// pre-allocate variables used all tests.
+let bbClient : BreakingBadClient;
+let bbEpisodes : Promise<episode[]>;
+
+describe('Breaking Bad client: ', () => {
     beforeAll(() => {
-        bbResponse = breakingBadExample as any
-        mockedAxios.get.mockResolvedValue({ data: bbResponse});
-    })
+        // Use same response JSON in tests instead of REST endpoint.
+        mockedAxios.get.mockResolvedValue({ data: bbResponse });
 
-    it('Check if getEpisodes returns only requested fields', async () => {
-        const bp = new BreakingBadClient();
-        const episodes = bp.getEpisodes();
+        // Spy on call and response to axios get method when it is called.
+        jest.spyOn(axios, 'get');
 
+        // Initialize Breaking Bad client.
+        bbClient = new BreakingBadClient();
+        bbEpisodes = bbClient.getEpisodes();
+    });
+    it('format of requested fields in episodes verified', async () => {
+        // Verify that not all fields in bbResponse are present in bbEpisodes.
+        expect((await bbEpisodes)[0]).not.toBe(bbResponse);
 
-        
-        expect((await episodes)[0]).not.toBe(bbResponse);
-        expect((await episodes)[0].title).toEqual('Pilot');
-        expect((await episodes)[0].season).toEqual('1');
-        expect((await episodes)[0].characters).toEqual([
+        // Verify that requested field are present.
+        expect((await bbEpisodes)[0].title).toEqual('Pilot');
+        expect((await bbEpisodes)[0].season).toEqual(1);
+        expect((await bbEpisodes)[0].characters).toEqual([
             'Walter White',
             'Jesse Pinkman',
             'Skyler White',
@@ -36,50 +49,15 @@ describe('fetchData', () => {
             'Bogdan Wolynetz'
           ]);
     });
-    it('Check if correct client call', async () => {
-        // axios get method should be called.
-
-        
-        jest.spyOn(axios, 'get')
-
-        // url which axios get method should call.
-        const episode_url = 'https://www.breakingbadapi.com/api/episodes';
-
-        const bp = new BreakingBadClient();
-        const episodes = bp.getEpisodes();
+    it('REST URL is the one expected', async () => {
+        // URL which axios get method should call.
+        const episodeURL = 'https://www.breakingbadapi.com/api/episodes';
 
         // Verify that axios get was called with expected url.
-        expect(axios.get).toHaveBeenCalledWith(episode_url);
+        expect(axios.get).toHaveBeenCalledWith(episodeURL);
     });
-    it('Check if incorrect client call', async () => {
-        // axios get method should be called.
-        jest.spyOn(axios, 'get')
-
-        // url which axios get method should call.
-        const episode_url = 'https://wrong_endpoint';
-
-        const bp = new BreakingBadClient();
-        await bp.getEpisodes();
-        // Verify that axios get was called with expected url.
-        expect(axios.get).not.toHaveBeenCalledWith(episode_url);
-    });
-    it('Check if response is not an empty list', async () => {
-        // Given
-        const bp = new BreakingBadClient();
-
-        // When
-        const episodes = bp.getEpisodes();
-
-        // Then
-        expect((await episodes).length).not.toEqual(0);
-        expect(typeof (await episodes)).not.toBe(null)
-    });
-    it('Check if correct total number of episodes is retrieved', async () => {
-        const bp = new BreakingBadClient();
-        const episodes = bp.getEpisodes();
-
-        expect((await episodes).length).toEqual(1);
+    it('response list has correct size and type', async () => {
+        expect(typeof (await bbEpisodes)).not.toBe(null);
+        expect((await bbEpisodes).length).toEqual(1);
     });
 });
-
-

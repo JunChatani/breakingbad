@@ -1,7 +1,8 @@
-import {IDrama} from "./IDrama";
-import {episode} from "../model/episode";
+import { IDrama } from "./IDrama";
 
-// Inbound port
+import { episode } from "../model/episode";
+
+
 export class ShowService {
     client: IDrama;
 
@@ -20,30 +21,29 @@ export class ShowService {
     async getEpisodesByName(names: string | string[]): Promise<episode[]> {
         const episodes = await this.getEpisodes();
         if (typeof names === "string") {
-            return episodes.filter(episode => (episode.characters).some(character => (character === names)));
+            return episodes.filter(ep => (ep.characters).some(character => (character === names)));
         } else {
-            return episodes.filter(episode => (names.every(name => (episode.characters.includes(name)))))
+            return episodes.filter(ep => (names.every(name => (ep.characters.includes(name)))))
         }
     }
 
     async getEpisodeCharacterList() {
         const episodes = await this.getEpisodes();
-        return episodes.map(episode => episode.characters);
+        return episodes.map(ep => ep.characters);
     }
 
-    format(episode: episode) : string {
-        let preSeason : string = "S" + episode.season;
-        let preEpisode : string = `${episode.episodeNumber}`;
-        
-        if (episode.season < 10) {
-            preSeason = "S0" + episode.season;
+    string(ep: episode) : string {
+        let preSeason : string = "S" + ep.season;
+        let preEpisode : string = `${ep.episodeNumber}`;
+
+        if (ep.season < 10) {
+            preSeason = "S0" + ep.season;
         }
 
-        if (episode.episodeNumber < 10) {
-            preEpisode = "0" + episode.episodeNumber;
+        if (ep.episodeNumber < 10) {
+            preEpisode = "0" + ep.episodeNumber;
         }
 
-
-        return preSeason + preEpisode + " - " + episode.title;
+        return preSeason + preEpisode + " - " + ep.title;
     }
 };

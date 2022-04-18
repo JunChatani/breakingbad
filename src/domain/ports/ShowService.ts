@@ -8,14 +8,16 @@ export class ShowService {
         this.client = client;
     }
 
-    getEpisodes() {
-        return this.client.getEpisodes()
-            .then(r => r)
-            .catch(e => {throw new Error(e)});
+    async getEpisodes() : Promise<episode[]>{
+        const episodes = await this.client.getEpisodes()
+        if (episodes === null) {
+            throw new Error("Episodes is null");
+        }
+        return episodes;
     }
 
-    getEpisodeCharacterList(): episode[]{
-        return this.getEpisodes();
+    async getEpisodeCharacterList() {
+        const episodes = await this.getEpisodes();
+        return episodes.map(episode => episode.characters);
     }
 };
-

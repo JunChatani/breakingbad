@@ -24,11 +24,22 @@ describe('fetchData', () => {
         const episode_url = 'https://wrong_endpoint';
 
         const bp = new BreakingBadClient();
-        const episodes = bp.getEpisodes();
-
+        await bp.getEpisodes();
         // Verify that axios get was called with expected url.
         expect(axios.get).not.toHaveBeenCalledWith(episode_url);
     });
+    it('Check if response is not an empty list', async () => {
+        // Given
+        const bp = new BreakingBadClient();
+
+        // When
+        const episodes = bp.getEpisodes();
+
+        // Then
+        expect((await episodes).length).not.toEqual(0);
+        expect(typeof (await episodes)).toBe(episode[])
+    });
+
     it('fetches character info by id', async () => {
         const bp = new BreakingBadClient();
         const episodes = bp.getEpisodes();

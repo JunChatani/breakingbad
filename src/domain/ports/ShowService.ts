@@ -20,9 +20,21 @@ export class ShowService {
     async getEpisodesByName(names: string | string[]): Promise<episode[]> {
         const episodes = await this.getEpisodes();
         if (typeof names === "string") {
-            return episodes.filter(episode => (episode.characters).some(character => character === names))
+            return episodes.filter(episode => (episode.characters).some(character => character === names));
         } else {
-            return episodes.filter(episode => (episode.characters).some(character => names.includes(character)))
+            return episodes.filter(episode => {
+                console.log(episode);
+                names.every(name => {
+                    console.log(name);
+                    episode.characters.includes(name)
+                })
+            });
+            // return episodes.filter(episode => {
+            //     (episode.characters).includes(character => {
+            //         console.log(character);
+            //         chara.includes(character)
+            //     })
+            // });
         }
     }
 

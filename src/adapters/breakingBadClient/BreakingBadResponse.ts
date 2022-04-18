@@ -14,6 +14,7 @@ export function mapEpisodes(episodes: breakingBadEpisodeResponse[]) : episode[]{
     return episodes.map(it => <episode>{
         title: it.title,
         season: it.season,
-        characters: it.characters
+        characters: it.characters,
+        episodeNumber: it.episode
     });
 }

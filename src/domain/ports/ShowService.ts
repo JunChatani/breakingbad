@@ -30,4 +30,20 @@ export class ShowService {
         const episodes = await this.getEpisodes();
         return episodes.map(episode => episode.characters);
     }
+
+    format(episode: episode) : string {
+        let preSeason : string = "S" + episode.season;
+        let preEpisode : string = `${episode.episodeNumber}`;
+        
+        if (episode.season < 10) {
+            preSeason = "S0" + episode.season;
+        }
+
+        if (episode.episodeNumber < 10) {
+            preEpisode = "0" + episode.episodeNumber;
+        }
+
+
+        return preSeason + preEpisode + " - " + episode.title;
+    }
 };

@@ -4,4 +4,5 @@ export type episode = {
     title : string;
     season : number;
     characters : character[];
+    episodeNumber : number;
 }

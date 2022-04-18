@@ -3,7 +3,7 @@ import { BreakingBadClient } from "../../adapters/breakingBadClient/BreakingBadC
 // Handler interface
 
 
-handle(list characters/character){
-    ShowService showservice = new ShowService(new BreakingBadClient())
-    return showService.getEpisodes();
-}
+// handle(list characters/character){
+//     ShowService showservice = new ShowService(new BreakingBadClient())
+//     return showService.getEpisodes();
+// }

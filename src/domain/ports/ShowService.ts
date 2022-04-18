@@ -15,6 +15,13 @@ export class ShowService {
         }
         return episodes;
     }
+    async getEpisodes(name : string) : Promise<episode[]>{
+        const episodes = await this.client.getEpisodes()
+        if (episodes === null) {
+            throw new Error("Episodes is null");
+        }
+        return episodes;
+    }
 
     async getEpisodeCharacterList() {
         const episodes = await this.getEpisodes();

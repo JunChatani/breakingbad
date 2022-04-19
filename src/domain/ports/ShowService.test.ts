@@ -70,36 +70,61 @@ describe('Show Service: ', () => {
     });
     describe('returns correct format when string() is called with certain episode. ', () => {
         it('with episode number and season less than 10', () => {
-            const ep: episode = {
+            // Given
+            const episode: episode = {
                 title: "Kafkaesque",
                 season: 3,
                 characters: [],
                 episodeNumber: 9
             };
-            expect(showService.formatEpisode(ep)).toEqual("S0309 - Kafkaesque");
+
+            // When
+            const formattedEpisode = showService.formatEpisode(episode);
+
+            // Then
+            expect(formattedEpisode).toEqual("S0309 - Kafkaesque");
         });
         it('with episode number greater than 9 and season less than 10', () => {
-            const ep: episode = {
+            // Given
+            const episode: episode = {
                 title: "Kafkaesque",
                 season: 7,
                 characters: [],
                 episodeNumber: 12
             }
-            expect(showService.formatEpisode(ep)).toEqual("S0712 - Kafkaesque");
+
+            // When
+            const formattedEpisode = showService.formatEpisode(episode);
+
+            // Then
+            expect(formattedEpisode).toEqual("S0712 - Kafkaesque");
         });
         it('with episode number and season greater than 9', () => {
+            // Given
             const ep: episode = {
                 title: "Kafkaesque",
                 season: 17,
                 characters: [],
                 episodeNumber: 12
             }
-            expect(showService.formatEpisode(ep)).toEqual("S1712 - Kafkaesque");
+
+            // When
+            const formattedEpisode = showService.formatEpisode(ep);
+
+            // Then
+            expect(formattedEpisode).toEqual("S1712 - Kafkaesque");
         });
     });
     describe('verify episodes characters are present in with getEpisodeByName. ', () => {
         it('in case a single character is passed as string', async () => {
-            expect((await showService.getEpisodesByName("Walter White"))).toEqual(
+            // Given
+            const name = "Walter White";
+
+            // When
+            const formattedEpisodes = await showService.getEpisodesByName(name);
+
+            // Then
+            expect(formattedEpisodes).toEqual(
                 [
                     {
                         title: "Pilot",
@@ -151,11 +176,75 @@ describe('Show Service: ', () => {
                 ]);
         });
         it('in case a single character is passed as a list', async () => {
-            expect((await showService.getEpisodesByName(["Walter White"]))).toEqual(
-                (await showService.getEpisodesByName("Walter White")))
+            // Given
+            const names = ["Walter White"];
+
+            // When
+            const episodes : episode[] = await showService.getEpisodesByName(names);
+
+            // Then
+            expect(episodes).toEqual(
+                (
+                    [
+                        {
+                            title: "Pilot",
+                            season: "1",
+                            characters: [
+                                "Walter White",
+                                "Jesse Pinkman",
+                                "Skyler White",
+                                "Hank Schrader",
+                                "Marie Schrader",
+                                "Walter White Jr.",
+                                "Krazy-8",
+                                "Bogdan Wolynetz"
+                            ],
+                            episodeNumber: "1"
+                        },
+                        {
+                            title: "Ozymandias",
+                            season: "5",
+                            characters: [
+                                "Walter White",
+                                "Jesse Pinkman",
+                                "Skyler White",
+                                "Hank Schrader",
+                                "Marie Schrader",
+                                "Walter White Jr.",
+                                "Todd Alquist",
+                                "Jack Welker",
+                                "Steve Gomez"
+                            ],
+                            episodeNumber: "14"
+                        },
+                        {
+                            title: "Kafkaesque",
+                            season: "3",
+                            characters: [
+                                "Walter White",
+                                "Jesse Pinkman",
+                                "Skyler White",
+                                "Hank Schrader",
+                                "Marie Schrader",
+                                "Walter White Jr.",
+                                "Gustavo Fring",
+                                "Saul Goodman",
+                                "Ted Beneke"
+                            ],
+                            episodeNumber: "9"
+                        }
+                    ]
+                ))
         });
         it('in case multiple characters are passed as list', async () => {
-            expect((await showService.getEpisodesByName(["Skyler White", "Ted Beneke"]))).toEqual(
+            // Given
+            const names: string[] = ["Skyler White", "Ted Beneke"];
+
+            // When
+            const episodes = await showService.getEpisodesByName(names);
+
+            // Then
+            expect(episodes).toEqual(
                 [
                     {
                         title: "Kafkaesque",

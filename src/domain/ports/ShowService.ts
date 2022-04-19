@@ -42,8 +42,8 @@ export class ShowService {
     }
 
     formatEpisode(episode: episode): string {
-        const formattedSeason: string = episode.season < MAX_FORMAT_NUMBER ? "S0" + episode.season : "S" + episode.season;
-        const formattedEpisode: string = episode.episodeNumber < MAX_FORMAT_NUMBER ? "0" + episode.episodeNumber : `${episode.episodeNumber}`;
+        const formattedSeason: string = episode.season < MAX_FORMAT_NUMBER ? `S0${episode.season}` : `S${episode.season}`;
+        const formattedEpisode: string = episode.episodeNumber < MAX_FORMAT_NUMBER ? `0${episode.episodeNumber}` : `${episode.episodeNumber}`;
 
         return formattedSeason + formattedEpisode + " - " + episode.title;
     }

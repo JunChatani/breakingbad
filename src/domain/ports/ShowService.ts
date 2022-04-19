@@ -3,6 +3,8 @@ import { IDrama } from "./IDrama";
 import { episode } from "../model/episode";
 
 
+const MAX_ALLOWED_NUMBER = 10;
+
 export class ShowService {
     client: IDrama;
 
@@ -36,21 +38,21 @@ export class ShowService {
 
     async getFormattedEpisodeListByName(names?: string | string[]) : Promise<string[]> {
         const episodes = await this.getEpisodesByName(names);
-        return episodes.map((ep) => this.string(ep));
+        return episodes.map((ep) => this.formatEpisode(ep));
     }
 
-    string(ep: episode) : string {
-        let preSeason : string = "S" + ep.season;
-        let preEpisode : string = `${ep.episodeNumber}`;
+    formatEpisode(episode: episode) : string {
+        let formattedSeason : string = "S" + episode.season;
+        let formattedEpisode : string = `${episode.episodeNumber}`;
 
-        if (ep.season < 10) {
-            preSeason = "S0" + ep.season;
+        if (episode.season < MAX_ALLOWED_NUMBER) {
+            formattedSeason = "S0" + episode.season;
         }
 
-        if (ep.episodeNumber < 10) {
-            preEpisode = "0" + ep.episodeNumber;
+        if (episode.episodeNumber < MAX_ALLOWED_NUMBER) {
+            formattedEpisode = "0" + episode.episodeNumber;
         }
 
-        return preSeason + preEpisode + " - " + ep.title;
+        return formattedSeason + formattedEpisode + " - " + episode.title;
     }
 };

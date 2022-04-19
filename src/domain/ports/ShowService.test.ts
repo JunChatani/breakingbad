@@ -57,7 +57,7 @@ describe('Show Service: ', () => {
                 characters: [],
                 episodeNumber: 9
             };
-            expect(showService.string(ep)).toEqual("S0309 - Kafkaesque");
+            expect(showService.formatEpisode(ep)).toEqual("S0309 - Kafkaesque");
         });
         it('with episode number greater than 9 and season less than 10', () => {
             const ep : episode = {
@@ -66,7 +66,7 @@ describe('Show Service: ', () => {
                 characters: [],
                 episodeNumber: 12
             }
-            expect(showService.string(ep)).toEqual("S0712 - Kafkaesque");
+            expect(showService.formatEpisode(ep)).toEqual("S0712 - Kafkaesque");
         });
         it('with episode number and season greater than 9', () => {
             const ep : episode = {
@@ -75,7 +75,7 @@ describe('Show Service: ', () => {
                 characters: [],
                 episodeNumber: 12
             }
-            expect(showService.string(ep)).toEqual("S1712 - Kafkaesque");
+            expect(showService.formatEpisode(ep)).toEqual("S1712 - Kafkaesque");
         });
     });
     describe('verify episodes characters are present in with getEpisodeByName. ', () => {

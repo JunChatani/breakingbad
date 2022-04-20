@@ -2,7 +2,7 @@ import {IDrama} from "./IDrama";
 import {FakeDrama} from "./FakeDrama";
 import {ShowService} from "./ShowService";
 
-import {episode} from "../model/episode";
+import {episode, formatEpisode} from "../model/episode";
 
 import clientExample from "./ClientMockResponse.json";
 
@@ -20,7 +20,7 @@ describe('Show Service: ', () => {
     describe('verify list of episodes in correct format are returned ', () => {
         it('for no characters passed', async () => {
             // Given & When
-            const actualFormattedEpisodes = await showService.getFormattedEpisodeListByName();
+            const actualFormattedEpisodes = await showService.getFormattedEpisodesByName();
 
             // Then
             expect(actualFormattedEpisodes).toEqual([]);
@@ -30,7 +30,7 @@ describe('Show Service: ', () => {
             const name: string = "";
 
             // When
-            const actualFormattedEpisodes = await showService.getFormattedEpisodeListByName(name);
+            const actualFormattedEpisodes = await showService.getFormattedEpisodesByName(name);
 
             // Then
             expect(actualFormattedEpisodes).toEqual([]);
@@ -40,7 +40,7 @@ describe('Show Service: ', () => {
             const names: string[] = [];
 
             // When
-            const actualFormattedEpisodes = await showService.getFormattedEpisodeListByName(names);
+            const actualFormattedEpisodes = await showService.getFormattedEpisodesByName(names);
 
             // Then
             expect(actualFormattedEpisodes).toEqual([]);
@@ -50,7 +50,7 @@ describe('Show Service: ', () => {
             const names: string[] = ['Walter White'];
 
             // When
-            const actualFormattedEpisodes = await showService.getFormattedEpisodeListByName(names);
+            const actualFormattedEpisodes = await showService.getFormattedEpisodesByName(names);
 
             // Then
             expect(actualFormattedEpisodes).toEqual(
@@ -61,7 +61,7 @@ describe('Show Service: ', () => {
                 ]);
         });
         it('for multiple characters passed', async () => {
-            expect(await showService.getFormattedEpisodeListByName(["Skyler White", "Ted Beneke"])).toEqual(
+            expect(await showService.getFormattedEpisodesByName(["Skyler White", "Ted Beneke"])).toEqual(
                 [
                     "S0309 - Kafkaesque"
                 ]);
@@ -79,7 +79,7 @@ describe('Show Service: ', () => {
             };
 
             // When
-            const formattedEpisode = showService.formatEpisode(episode);
+            const formattedEpisode = formatEpisode(episode);
 
             // Then
             expect(formattedEpisode).toEqual("S0309 - Kafkaesque");
@@ -94,7 +94,7 @@ describe('Show Service: ', () => {
             }
 
             // When
-            const formattedEpisode = showService.formatEpisode(episode);
+            const formattedEpisode = formatEpisode(episode);
 
             // Then
             expect(formattedEpisode).toEqual("S0712 - Kafkaesque");
@@ -109,7 +109,7 @@ describe('Show Service: ', () => {
             }
 
             // When
-            const formattedEpisode = showService.formatEpisode(ep);
+            const formattedEpisode = formatEpisode(ep);
 
             // Then
             expect(formattedEpisode).toEqual("S1712 - Kafkaesque");

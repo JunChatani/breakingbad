@@ -1,9 +1,7 @@
 import {IDrama} from "./IDrama";
 
-import {episode} from "../model/episode";
+import {episode, formatEpisode} from "../model/episode";
 
-
-const MAX_FORMAT_NUMBER = 10;
 
 export class ShowService {
     client: IDrama;
@@ -36,15 +34,8 @@ export class ShowService {
         return episodes.map(ep => ep.characters);
     }
 
-    async getFormattedEpisodeListByName(names?: string | string[]): Promise<string[]> {
+    async getFormattedEpisodesByName(names?: string | string[]): Promise<string[]> {
         const episodes = await this.getEpisodesByName(names);
-        return episodes.map((ep) => this.formatEpisode(ep));
+        return episodes.map((ep) => formatEpisode(ep));
     }
-
-    formatEpisode(episode: episode): string {
-        const formattedSeason: string = episode.season < MAX_FORMAT_NUMBER ? `S0${episode.season}` : `S${episode.season}`;
-        const formattedEpisode: string = episode.episodeNumber < MAX_FORMAT_NUMBER ? `0${episode.episodeNumber}` : `${episode.episodeNumber}`;
-
-        return formattedSeason + formattedEpisode + " - " + episode.title;
-    }
-};
+}

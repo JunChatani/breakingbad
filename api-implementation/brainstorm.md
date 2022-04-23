@@ -37,9 +37,11 @@ getCharacters() keyvalue id/name
 <!-- -- Add field to episodes type were missing one ! -->
 <!-- -- Debug issue in ShowSevice test (multiple names). -->
 
--- implement Handler
+
+
 -- implement adapters/api
-
-
-Run linter with 
-tslint -c tslint.json 'src/**/*.ts'
+    -  for inbound REST calls handler. Does not require a port.
+    --- implement Handler
+       - new Showservice instance for each IDrama implementer.
+       - only IDrama handler.
+       - Reacts on received REST calls to 

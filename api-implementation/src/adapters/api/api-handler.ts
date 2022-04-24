@@ -1,8 +1,16 @@
+import { JsonableValue } from "ts-jest";
+import { ShowService } from "../../domain/ports/ShowService";
+import { BreakingBadClient } from "../breakingBadClient/BreakingBadClient";
+
 exports.handler = async function (event: any) {
   console.log("request:", JSON.stringify(event, undefined, 2));
+
+  const showservice = new ShowService(new BreakingBadClient());
+
+  const something = showservice.getEpisodesByName("Walter White");
   return {
     statusCode: 200,
     headers: { "Content-Type": "text/plain" },
-    body: `API adapter reached!\n`,
+    body: JSON.stringify(something),
   };
 };

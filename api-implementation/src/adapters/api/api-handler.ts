@@ -6,10 +6,18 @@ exports.handler = async function (event: any) {
 
   const showservice = new ShowService(new BreakingBadClient());
 
-  const something = await showservice.getEpisodesByName("Walter White");
-  return {
-    statusCode: 200,
-    headers: { "Content-Type": "text/plain" },
-    body: JSON.stringify(something),
-  };
+  try {
+    const something = await showservice.getEpisodesByName("Walter White");
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify(something),
+    };
+  } catch (errors) {
+    return {
+      statusCode: 500,
+      headers: { "Content-Type": "text/plain" },
+      body: `Something failed internally: ${errors}`,
+    };
+  }
 };

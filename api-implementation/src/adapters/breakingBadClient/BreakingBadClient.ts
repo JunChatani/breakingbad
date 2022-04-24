@@ -14,7 +14,7 @@ export class BreakingBadClient implements IDrama {
         .then((resp) => resp.data);
       return mapEpisodes(episodes);
     } catch (errors) {
-      throw new Error(`Error is : ${errors}`);
+      throw new Error(`Failed to get Breaking Bad response : ${errors}`);
     }
   };
 }

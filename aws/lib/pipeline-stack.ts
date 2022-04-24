@@ -23,6 +23,7 @@ export class PipelineStack extends Stack {
           "pwd",
           "npm ci",
           "npm run build",
+          "npm run test",
           "pwd",
           "cd ./../",
           "cd ./aws",

@@ -4,6 +4,7 @@
   "description": "test project",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "jest",
     "eslint": "eslint 'src/**/*.ts'",
     "eslint:fix": "eslint --fix 'src/**/*.ts'",

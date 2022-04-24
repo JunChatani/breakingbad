@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { IDrama } from "../../domain/ports/IDrama";
+import { IDrama } from "./../../domain/ports/IDrama";
 
 import { breakingBadEpisodeResponse, mapEpisodes } from "./BreakingBadResponse";
 

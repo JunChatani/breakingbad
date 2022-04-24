@@ -3,7 +3,7 @@ import axios from "axios";
 import { BreakingBadClient } from "./BreakingBadClient";
 
 import { breakingBadEpisodeResponse } from "./BreakingBadResponse";
-import { episode } from "../../domain/model/episode";
+import { episode } from "./../../domain/model/episode";
 
 import breakingBadResponseExample from "./BreakingBadMockResponse.json";
 

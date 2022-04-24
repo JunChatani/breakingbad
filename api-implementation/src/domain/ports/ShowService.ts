@@ -1,6 +1,6 @@
 import { IDrama } from "./IDrama";
 
-import { episode, formatEpisode } from "../model/episode";
+import { episode, formatEpisode } from "./../model/episode";
 
 export class ShowService {
   client: IDrama;

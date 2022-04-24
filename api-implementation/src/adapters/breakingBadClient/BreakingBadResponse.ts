@@ -1,4 +1,4 @@
-import { episode } from "../../domain/model/episode";
+import { episode } from "./../../domain/model/episode";
 
 export type breakingBadEpisodeResponse = {
   title: string;

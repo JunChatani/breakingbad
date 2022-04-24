@@ -1,5 +1,5 @@
-import { ShowService } from "../../domain/ports/ShowService";
-import { BreakingBadClient } from "../breakingBadClient/BreakingBadClient";
+import { ShowService } from "./../../domain/ports/ShowService";
+import { BreakingBadClient } from "./../breakingBadClient/BreakingBadClient";
 
 exports.handler = async function (event: any) {
   console.log("request:", JSON.stringify(event, undefined, 2));

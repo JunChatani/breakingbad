@@ -5,11 +5,14 @@ exports.handler = async function (event: any) {
   console.log("request:", JSON.stringify(event, undefined, 2));
 
   const request = JSON.parse(event.body);
+  console.log(request);
 
   const showService = new ShowService(new BreakingBadClient());
 
   try {
-    const something = await showService.getFormattedEpisodesByName(request);
+    const something = await showService.getFormattedEpisodesByName(
+      request.characters
+    );
     return {
       statusCode: 200,
       headers: { "Content-Type": "text/plain" },

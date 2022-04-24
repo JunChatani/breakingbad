@@ -19,6 +19,10 @@ export class PipelineStack extends Stack {
         }),
         commands: [
           "pwd",
+          "cd ./api-implementation",
+          "npm ci",
+          "pwd",
+          "cd ./../",
           "cd ./aws",
           "pwd",
           "npm ci",

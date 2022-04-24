@@ -1,8 +1,8 @@
-exports.handler = async function (event) {
+exports.handler = async function (event: any) {
   console.log("request:", JSON.stringify(event, undefined, 2));
   return {
     statusCode: 200,
     headers: { "Content-Type": "text/plain" },
-    body: `Hello, Alperen! Lambda has changed: ${event.path}\n`,
+    body: `API adapter reached!\n`,
   };
 };

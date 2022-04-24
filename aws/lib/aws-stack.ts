@@ -12,8 +12,8 @@ export class AwsStack extends Stack {
     // defines an AWS Lambda resource
     const hello = new lambda.Function(this, "APIHandler", {
       runtime: lambda.Runtime.NODEJS_14_X, // execution environment
-      code: lambda.Code.fromAsset("./../api-implementation/src/adapters/api"), // code loaded from "api" directory
-      handler: "api-handler.handler", // file is "api-handler", function is "handler"
+      code: lambda.Code.fromAsset("./../api-implementation/"), // code loaded from "api" directory
+      handler: "src/adapters/api/api-handler.handler", // file is "api-handler", function is "handler"
     });
 
     // defines an API Gateway REST API resource backed by our "hello" function.

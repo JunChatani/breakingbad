@@ -4,14 +4,12 @@ import { BreakingBadClient } from "./../breakingBadClient/BreakingBadClient";
 exports.handler = async function (event: any) {
   console.log("request:", JSON.stringify(event, undefined, 2));
   console.log(event);
-  const request = JSON.parse(event);
-  console.log(request);
 
   const showService = new ShowService(new BreakingBadClient());
 
   try {
     const something = await showService.getFormattedEpisodesByName(
-      request.characters
+      event.characters
     );
     return {
       statusCode: 200,

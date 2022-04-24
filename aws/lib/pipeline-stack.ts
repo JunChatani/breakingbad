@@ -10,7 +10,7 @@ export class PipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const pipeline = new CodePipeline(this, "PetProjectPipeline", {
+    const pipeline = new CodePipeline(this, "PetProjectPipelines", {
       synth: new ShellStep("Synth", {
         input: CodePipelineSource.connection("JunChatani/breakingbad", "main", {
           connectionArn:

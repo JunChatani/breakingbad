@@ -3,8 +3,8 @@ import { BreakingBadClient } from "./../breakingBadClient/BreakingBadClient";
 
 exports.handler = async function (event: any) {
   console.log("request:", JSON.stringify(event, undefined, 2));
-
-  const request = JSON.parse(event.body);
+  console.log(event);
+  const request = JSON.parse(event);
   console.log(request);
 
   const showService = new ShowService(new BreakingBadClient());

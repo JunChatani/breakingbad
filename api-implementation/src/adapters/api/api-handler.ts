@@ -1,4 +1,3 @@
-import { JsonableValue } from "ts-jest";
 import { ShowService } from "../../domain/ports/ShowService";
 import { BreakingBadClient } from "../breakingBadClient/BreakingBadClient";
 
@@ -7,7 +6,7 @@ exports.handler = async function (event: any) {
 
   const showservice = new ShowService(new BreakingBadClient());
 
-  const something = showservice.getEpisodesByName("Walter White");
+  const something = await showservice.getEpisodesByName("Walter White");
   return {
     statusCode: 200,
     headers: { "Content-Type": "text/plain" },

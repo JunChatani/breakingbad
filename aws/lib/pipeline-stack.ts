@@ -5,6 +5,7 @@ import {
   ShellStep,
 } from "aws-cdk-lib/pipelines";
 import { Construct } from "constructs";
+import { MyPipelineAppStage } from "./aws-pipeline-stage";
 
 export class PipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -27,5 +28,11 @@ export class PipelineStack extends Stack {
         primaryOutputDirectory: "./aws/cdk.out",
       }),
     });
+
+    pipeline.addStage(
+      new MyPipelineAppStage(this, "testInPipeline", {
+        env: { account: "047177058507", region: "eu-west-1" },
+      })
+    );
   }
 }

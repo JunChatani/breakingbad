@@ -2,7 +2,7 @@ import { IDrama } from "./IDrama";
 import { FakeDrama } from "./FakeDrama";
 import { ShowService } from "./ShowService";
 
-import { episode } from "./../model/episode";
+import { episode } from "../model/episode";
 
 import clientExample from "./ClientMockResponse.json";
 
